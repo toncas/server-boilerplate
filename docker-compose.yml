@@ -10,17 +10,18 @@ services:
         port: 9999
         databases:
           default:
-            connector: postgres
-            host: postgres
-            port: 5432
-            user: prisma
-            password: prisma
+            connector: ${DB_CONNECTOR}
+            database: ${DB_DATABASE_NAME}
+            host: ${DB_HOST}
+            port: ${DB_PORT}
+            user: ${DB_USER}
+            password: ${DB_PASSWORD}
   postgres:
     image: postgres:10.3
     restart: always
     environment:
-      POSTGRES_USER: disco
-      POSTGRES_PASSWORD: disco
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
     volumes:
       - postgres:/var/lib/postgresql/data
 volumes:
